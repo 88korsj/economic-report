@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2026년 세계·한국경제 평가와 2027년 전망 — IMF·세계은행·OECD 종합비교</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,500&family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F2F1EC;
+    --ink:#16233A;
+    --ink-soft:#3D4A61;
+    --line:#D8D4C8;
+    --line-soft:#E7E4DA;
+    --card:#FBFAF6;
+    --amber:#B4762A;
+    --amber-soft:#EFE1CB;
+    --imf:#2A5CAA;
+    --wb:#1B7A6E;
+    --oecd:#7A4FA0;
+    --up:#A13D3D;
+    --down:#2C6E49;
+    --shadow: 0 1px 0 rgba(22,35,58,0.04);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans KR', sans-serif;
+    font-weight:400;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  .num{font-family:'IBM Plex Mono', monospace;}
+  a{color:inherit;}
+
+  /* ---------- Masthead ---------- */
+  .masthead{
+    background:var(--ink);
+    color:var(--paper);
+    padding:56px 6vw 40px;
+    position:relative;
+    overflow:hidden;
+  }
+  .masthead::after{
+    content:"";
+    position:absolute;
+    right:-8%; top:-30%;
+    width:520px; height:520px;
+    border:1px solid rgba(242,241,236,0.08);
+    border-radius:50%;
+  }
+  .masthead::before{
+    content:"";
+    position:absolute;
+    right:2%; top:-8%;
+    width:340px; height:340px;
+    border:1px solid rgba(242,241,236,0.08);
+    border-radius:50%;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:#C9BFA0;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--amber);}
+  h1.title{
+    font-family:'Newsreader', serif;
+    font-weight:600;
+    font-size:clamp(30px, 4.2vw, 52px);
+    line-height:1.18;
+    margin:18px 0 14px;
+    max-width:920px;
+    letter-spacing:-0.01em;
+  }
+  .subtitle{
+    font-size:16.5px;
+    color:#D7D2C2;
+    max-width:640px;
+    font-weight:300;
+  }
+  .source-chips{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:28px;
+  }
+  .chip{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    padding:7px 12px;
+    border-radius:3px;
+    border:1px solid rgba(242,241,236,0.18);
+    color:#EFECE1;
+    letter-spacing:0.02em;
+  }
+  .chip b{font-weight:600;}
+  .chip.imf{border-color:rgba(80,130,210,0.55); background:rgba(42,92,170,0.18);}
+  .chip.wb{border-color:rgba(60,160,140,0.5); background:rgba(27,122,110,0.18);}
+  .chip.oecd{border-color:rgba(170,120,220,0.5); background:rgba(122,79,160,0.2);}
+
+  /* ---------- Shell / nav ---------- */
+  .shell{
+    display:grid;
+    grid-template-columns:220px 1fr;
+    gap:0;
+    max-width:1180px;
+    margin:0 auto;
+  }
+  nav.toc{
+    position:sticky;
+    top:0;
+    align-self:start;
+    padding:44px 18px 40px 6vw;
+    max-height:100vh;
+    overflow:auto;
+  }
+  nav.toc ol{
+    list-style:none; margin:0; padding:0;
+    border-left:1px solid var(--line);
+  }
+  nav.toc li{margin:0;}
+  nav.toc a{
+    display:block;
+    padding:9px 0 9px 16px;
+    margin-left:-1px;
+    border-left:1px solid transparent;
+    font-size:13px;
+    color:var(--ink-soft);
+    text-decoration:none;
+  }
+  nav.toc a:hover{border-left-color:var(--amber); color:var(--ink);}
+  nav.toc .n{font-family:'IBM Plex Mono',monospace; color:var(--amber); margin-right:8px; font-size:11.5px;}
+
+  main{padding:44px 6vw 100px 34px;}
+  section{margin-bottom:64px; scroll-margin-top:24px;}
+  section:first-of-type{margin-top:0;}
+
+  .kicker{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--amber);
+    display:flex; align-items:center; gap:10px;
+    margin-bottom:10px;
+  }
+  .kicker::after{content:"";flex:1;height:1px;background:var(--line);}
+  h2{
+    font-family:'Newsreader', serif;
+    font-weight:600;
+    font-size:clamp(22px,2.6vw,30px);
+    margin:0 0 20px;
+    letter-spacing:-0.005em;
+  }
+  h3{
+    font-family:'Newsreader', serif;
+    font-weight:600;
+    font-size:19px;
+    margin:34px 0 12px;
+  }
+  p{margin:0 0 14px; font-size:15.5px; color:var(--ink);}
+  p.lead{font-size:17px; color:var(--ink-soft); font-weight:300; max-width:760px;}
+  strong{font-weight:600; color:var(--ink);}
+  .note{
+    font-size:13px; color:var(--ink-soft); font-style:italic;
+  }
+
+  /* ---------- KPI cards ---------- */
+  .kpi-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    margin:28px 0 8px;
+  }
+  .kpi{
+    background:var(--card);
+    padding:22px 20px 20px;
+  }
+  .kpi .kpi-label{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px; text-transform:uppercase; letter-spacing:0.06em;
+    color:var(--ink-soft);
+    margin-bottom:10px;
+  }
+  .kpi .kpi-value{
+    font-family:'Newsreader',serif;
+    font-weight:600;
+    font-size:34px;
+    line-height:1;
+  }
+  .kpi .kpi-delta{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12.5px;
+    margin-top:6px;
+  }
+  .kpi .kpi-delta.up{color:var(--up);}
+  .kpi .kpi-delta.down{color:var(--down);}
+  .kpi .kpi-src{font-size:11px; color:var(--ink-soft); margin-top:10px;}
+
+  /* ---------- Spectrum comparator ---------- */
+  .spectrum-block{
+    background:var(--card);
+    border:1px solid var(--line-soft);
+    padding:22px 26px 26px;
+    margin:26px 0;
+  }
+  .spectrum-title{
+    font-size:13.5px; font-weight:600; margin-bottom:18px;
+    display:flex; justify-content:space-between; align-items:baseline;
+  }
+  .spectrum-title .range{font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--ink-soft); font-weight:400;}
+  .spectrum{position:relative; height:34px; margin-bottom:8px;}
+  .spectrum .track{position:absolute; left:0; right:0; top:16px; height:2px; background:var(--line);}
+  .spectrum .dot{
+    position:absolute; top:6px; width:22px; height:22px; border-radius:50%;
+    transform:translateX(-50%);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'IBM Plex Mono',monospace; font-size:9.5px; font-weight:600; color:#fff;
+    border:2px solid var(--card);
+  }
+  .spectrum .dot.imf{background:var(--imf);}
+  .spectrum .dot.wb{background:var(--wb);}
+  .spectrum .dot.oecd{background:var(--oecd);}
+  .spectrum .val{
+    position:absolute; top:-16px; transform:translateX(-50%);
+    font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--ink-soft);
+  }
+  .legend{display:flex; gap:18px; margin-top:10px; flex-wrap:wrap;}
+  .legend span{font-size:11.5px; color:var(--ink-soft); display:flex; align-items:center; gap:6px;}
+  .legend i{width:9px;height:9px;border-radius:50%; display:inline-block;}
+  .legend i.imf{background:var(--imf);} .legend i.wb{background:var(--wb);} .legend i.oecd{background:var(--oecd);}
+
+  /* ---------- Tables ---------- */
+  table{
+    width:100%; border-collapse:collapse; margin:18px 0 8px;
+    font-size:13.5px;
+  }
+  thead th{
+    text-align:right;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px; text-transform:uppercase; letter-spacing:0.04em;
+    color:var(--ink-soft);
+    border-bottom:1px solid var(--ink);
+    padding:8px 10px;
+    font-weight:500;
+  }
+  thead th:first-child, tbody td:first-child{text-align:left;}
+  tbody td{
+    text-align:right;
+    padding:8px 10px;
+    border-bottom:1px solid var(--line-soft);
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13px;
+  }
+  tbody td:first-child{font-family:'IBM Plex Sans KR',sans-serif; font-size:13.5px;}
+  tbody tr.hl td{background:var(--amber-soft); font-weight:600;}
+  tbody tr.section-row td{
+    font-family:'IBM Plex Sans KR', sans-serif;
+    font-weight:600; color:var(--ink-soft); background:transparent;
+    padding-top:16px; border-bottom:1px solid var(--line);
+  }
+  .pos{color:var(--up);} .neg{color:var(--down);}
+  .table-wrap{overflow-x:auto;}
+  .table-caption{font-size:12px; color:var(--ink-soft); margin-top:6px;}
+
+  table.merged thead th.grp{
+    text-align:center;
+    font-family:'IBM Plex Sans KR', sans-serif;
+    font-size:12.5px;
+    font-weight:600;
+    letter-spacing:0;
+    text-transform:none;
+    color:#fff;
+    padding:9px 10px 7px;
+    border-bottom:none;
+  }
+  table.merged thead th.grp .grp-sub{
+    display:block;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:9.5px;
+    font-weight:400;
+    opacity:0.85;
+    margin-top:2px;
+    letter-spacing:0;
+  }
+  table.merged thead th.sub{
+    text-align:center;
+    font-size:11px;
+    padding:6px 10px 8px;
+    color:#fff;
+  }
+  table.merged thead th.imf-grp{background:var(--imf); border-bottom:2px solid var(--imf);}
+  table.merged thead th.wb-grp{background:var(--wb); border-bottom:2px solid var(--wb);}
+  table.merged thead th.oecd-grp{background:var(--oecd); border-bottom:2px solid var(--oecd);}
+  table.merged thead th[rowspan="2"]{
+    background:var(--ink); color:#fff; text-align:left; vertical-align:middle;
+    border-bottom:none;
+  }
+  table.merged tbody td{border-right:1px solid var(--line-soft);}
+  table.merged tbody td:first-child{border-right:1px solid var(--ink);}
+  table.merged tbody td:nth-child(3),
+  table.merged tbody td:nth-child(5){border-right:1px solid var(--ink-soft);}
+  table.merged tbody td:last-child{border-right:none;}
+  table.merged tbody td .note{font-size:10px; display:block; margin-top:2px;}
+
+  /* ---------- Callouts ---------- */
+  .callout{
+    border-left:3px solid var(--amber);
+    background:var(--card);
+    padding:16px 20px;
+    margin:22px 0;
+    font-size:14.5px;
+  }
+  .callout .callout-label{
+    font-family:'IBM Plex Mono',monospace; font-size:11px; text-transform:uppercase;
+    letter-spacing:0.06em; color:var(--amber); margin-bottom:6px; display:block;
+  }
+
+  .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:24px;}
+  .card{
+    background:var(--card); border:1px solid var(--line-soft); padding:20px 22px;
+  }
+  .card h4{
+    font-family:'Newsreader',serif; font-size:16.5px; font-weight:600; margin:0 0 10px;
+  }
+  .card ul{margin:0; padding-left:18px; font-size:14px;}
+  .card li{margin-bottom:7px;}
+
+  .divergence{
+    display:flex; gap:0; border:1px solid var(--line); margin:20px 0;
+  }
+  .divergence > div{flex:1; padding:20px 22px;}
+  .divergence > div + div{border-left:1px solid var(--line);}
+  .divergence .org{font-family:'IBM Plex Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:8px;}
+  .divergence .figure{font-family:'Newsreader',serif; font-size:30px; font-weight:600; margin-bottom:6px;}
+  .divergence .imf-block .org{color:var(--imf);}
+  .divergence .oecd-block .org{color:var(--oecd);}
+
+  footer{
+    padding:40px 6vw 60px 34px;
+    border-top:1px solid var(--line);
+    max-width:1180px;
+    margin-left:220px;
+    font-size:12.5px; color:var(--ink-soft);
+  }
+
+  /* ---------- Toolbar ---------- */
+  .toolbar{
+    position:fixed;
+    top:16px; right:16px;
+    z-index:1000;
+    display:flex;
+    align-items:center;
+    gap:6px;
+    background:var(--ink);
+    padding:7px;
+    border-radius:8px;
+    box-shadow:0 6px 20px rgba(22,35,58,0.28);
+  }
+  .toolbar button{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    letter-spacing:0.01em;
+    color:#EFECE1;
+    background:transparent;
+    border:1px solid rgba(242,241,236,0.22);
+    border-radius:5px;
+    padding:8px 12px;
+    cursor:pointer;
+    transition:background .15s, border-color .15s;
+    white-space:nowrap;
+  }
+  .toolbar button:hover{background:rgba(242,241,236,0.1); border-color:rgba(242,241,236,0.4);}
+  .toolbar button#editToggle.active{background:var(--amber); border-color:var(--amber); color:#1a1305;}
+  .toolbar button#printBtn{background:var(--amber); border-color:var(--amber); color:#1a1305; font-weight:600;}
+  .toolbar button#printBtn:hover{background:#C68638;}
+  .toolbar .hint{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10.5px;
+    color:#B7AF98;
+    padding:0 8px 0 4px;
+    max-width:150px;
+    line-height:1.4;
+    display:none;
+  }
+  .toolbar.editing .hint{display:block;}
+
+  /* ---------- Editable state ---------- */
+  [contenteditable="true"]{
+    cursor:text;
+    border-radius:2px;
+    transition:background .1s, outline .1s;
+  }
+  [contenteditable="true"]:hover{
+    outline:1.5px dashed var(--amber);
+    outline-offset:2px;
+    background:rgba(180,118,42,0.07);
+  }
+  [contenteditable="true"]:focus{
+    outline:2px solid var(--amber);
+    outline-offset:2px;
+    background:rgba(180,118,42,0.12);
+  }
+  body.editing-active .masthead [contenteditable="true"]:hover,
+  body.editing-active .masthead [contenteditable="true"]:focus{
+    outline-color:#F0B86A;
+    background:rgba(240,184,106,0.14);
+  }
+
+  /* ---------- Print / PDF export ---------- */
+  @media print{
+    @page{ size:A4; margin:14mm 12mm; }
+    *{ -webkit-print-color-adjust:exact !important; print-color-adjust:exact !important; }
+    body{background:#fff;}
+    .toolbar, nav.toc{ display:none !important; }
+    .shell{ display:block; max-width:100%; }
+    main{ padding:0; }
+    footer{ margin-left:0; padding:26px 0 0; }
+    .masthead{ padding:26px 22px; }
+    .masthead::after, .masthead::before{ display:none; }
+    h1.title{ font-size:26px; }
+    section{ margin-bottom:30px; }
+    h2, h3, h4{ break-after:avoid; }
+    .kpi-grid, .spectrum-block, .card, .divergence, .callout, table, .table-wrap{ break-inside:avoid; }
+    tr{ break-inside:avoid; }
+    [contenteditable="true"]:hover, [contenteditable="true"]:focus{
+      outline:none !important; background:transparent !important;
+    }
+  }
+
+  @media(max-width:900px){
+    .shell{grid-template-columns:1fr;}
+    nav.toc{display:none;}
+    main{padding:36px 6vw 80px;}
+    .kpi-grid{grid-template-columns:1fr 1fr;}
+    .grid-2{grid-template-columns:1fr;}
+    .divergence{flex-direction:column;}
+    .divergence > div + div{border-left:none; border-top:1px solid var(--line);}
+    footer{margin-left:0;}
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar" id="toolbar">
+  <button id="editToggle" type="button">✏️ 편집 모드 켜기</button>
+  <button id="printBtn" type="button">⬇ PDF로 저장</button>
+  <button id="resetBtn" type="button" title="편집 내용 되돌리기">↺ 초기화</button>
+  <span class="hint">클릭한 문장·숫자·표 칸을 바로 고칠 수 있어요. 완료되면 PDF로 저장하세요. (수정 내용은 이 탭에만 남고 새로고침하면 사라집니다)</span>
+</div>
+
+<div class="masthead">
+  <div class="eyebrow"><span class="dot"></span>ECONOMIC OUTLOOK COMPARISON · 2026.08</div>
+  <h1 class="title">중동 공급충격과 AI 훈풍이 교차한 2026년,<br>세계는 둔화 한국은 반등</h1>
+  <p class="subtitle">IMF·세계은행·OECD 세 기관의 2026년 세계경제 수정전망을 종합해 올해를 평가하고, 2027년 세계경제와 한국경제의 방향을 가늠한다.</p>
+  <div class="source-chips">
+    <span class="chip imf"><b>IMF</b> 세계경제수정전망 · 2026.7.8</span>
+    <span class="chip wb"><b>World Bank</b> Global Economic Prospects · 2026.6.11</span>
+    <span class="chip oecd"><b>OECD</b> Economic Outlook · 2026.6.3</span>
+  </div>
+</div>
+
+<div class="shell">
+  <nav class="toc">
+    <ol>
+      <li><a href="#overview"><span class="n">01</span>한눈에 보기</a></li>
+      <li><a href="#world26"><span class="n">02</span>2026 세계경제 평가</a></li>
+      <li><a href="#korea26"><span class="n">03</span>2026 한국경제 평가</a></li>
+      <li><a href="#world27"><span class="n">04</span>2027 세계경제 전망</a></li>
+      <li><a href="#korea27"><span class="n">05</span>2027 한국경제 전망</a></li>
+      <li><a href="#risk"><span class="n">06</span>리스크·정책 시사점</a></li>
+      <li><a href="#appendix"><span class="n">07</span>부록 · 상세 수치</a></li>
+    </ol>
+  </nav>
+
+  <main>
+
+    <!-- ================= 01 개요 ================= -->
+    <section id="overview">
+      <div class="kicker">01 · 한눈에 보기</div>
+      <h2>세계경제는 하향, 한국경제는 3개 기관 모두 대폭 상향</h2>
+      <p class="lead">중동전쟁에 따른 에너지·물류 공급충격과 인공지능(AI) 주도 기술투자 사이클이라는 상반된 두 기류 속에서, 세계경제 성장률은 세 기관 모두 직전 전망 대비 소폭 하향되었다. 반면 한국경제는 반도체·AI 하드웨어 수출호조에 힘입어 발표 대상국 중 가장 큰 폭으로 상향 조정되며 예외적인 흐름을 보였다.</p>
+
+      <div class="kpi-grid">
+        <div class="kpi">
+          <div class="kpi-label">2026년 세계 성장률</div>
+          <div class="kpi-value num">2.5~3.0%</div>
+          <div class="kpi-delta down num">IMF 3.0 · WB 2.5 · OECD 2.8</div>
+          <div class="kpi-src">3개 기관 모두 직전 전망 대비 하향(△0.1~0.4%p)</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">2026년 한국 성장률</div>
+          <div class="kpi-value num">2.6%</div>
+          <div class="kpi-delta up num">IMF +0.7%p · OECD +0.9%p</div>
+          <div class="kpi-src">발표대상국 중 최대 상향폭 (WB는 한국 별도 미발표)</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">2027년 세계 성장률</div>
+          <div class="kpi-value num">2.8~3.4%</div>
+          <div class="kpi-delta up num">IMF 3.4 · WB 2.8 · OECD 3.1</div>
+          <div class="kpi-src">에너지 공급 정상화에 따른 반등 공통 전망</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">2027년 한국 성장률</div>
+          <div class="kpi-value num">1.9~2.5%</div>
+          <div class="kpi-delta num" style="color:var(--ink-soft);">IMF 2.5 · OECD 1.9</div>
+          <div class="kpi-src">모멘텀 지속(IMF) vs 정상화(OECD) 시각차 존재</div>
+        </div>
+      </div>
+      <p class="note">※ 세계은행(WB)은 시장환율 기준 자체 분석기법을 사용해 IMF·OECD와 전망치 수준이 상이하나, 구매력평가(PPP) 기준으로 환산하면 '26년 2.9%로 양 기구와 유사하다.</p>
+
+      <div class="spectrum-block">
+        <div class="spectrum-title">세계 성장률 전망 스펙트럼<span class="range">범위 2.0% – 4.0%</span></div>
+        <div class="spectrum">
+          <div class="track"></div>
+          <div class="val" style="left:33.3%">2026</div>
+          <div class="dot wb" style="left:16.7%" title="World Bank 2.5%">WB</div>
+          <div class="dot oecd" style="left:33.3%" title="OECD 2.8%">OE</div>
+          <div class="dot imf" style="left:41.7%" title="IMF 3.0%">IMF</div>
+        </div>
+        <div class="spectrum">
+          <div class="track"></div>
+          <div class="val" style="left:70%">2027</div>
+          <div class="dot wb" style="left:33.3%" title="World Bank 2.8%">WB</div>
+          <div class="dot oecd" style="left:50%" title="OECD 3.1%">OE</div>
+          <div class="dot imf" style="left:58.3%" title="IMF 3.4%">IMF</div>
+        </div>
+        <div class="legend">
+          <span><i class="imf"></i>IMF</span>
+          <span><i class="wb"></i>World Bank(시장환율 기준)</span>
+          <span><i class="oecd"></i>OECD</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 02 2026 세계경제 ================= -->
+    <section id="world26">
+      <div class="kicker">02 · 2026 세계경제 평가</div>
+      <h2>공급충격과 AI 사이클의 줄다리기</h2>
+      <p>세 기관은 공통적으로 2026년 세계경제를 <strong>중동전쟁에 따른 에너지·교역 공급충격</strong>과 <strong>AI 주도 기술투자 사이클</strong>이라는 두 기류가 동시에 작용하는 국면으로 평가했다. IMF는 이번 전망의 부제를 "Global Economy in Crosscurrents of War and Technology"로 붙였고, OECD 역시 "under pressure"라는 표현으로 압력을 받는 세계경제를 표현했다. 호르무즈 해협 통항 차질에 따른 에너지가격 급등이 가계 구매력과 기업 비용을 동시에 짓눌렀다는 점에서 세 기관의 시각은 일치한다.</p>
+
+      <p>다만 성장률 하향 폭에는 다소 차이가 있다. IMF는 4월 전망 대비 △0.1%p(3.1%→3.0%), OECD는 3월 전망 대비 △0.1%p(2.9%→2.8%)의 소폭 하향에 그쳤지만, 세계은행은 '25년(2.9%) 대비 △0.4%p, 1월 전망 대비로도 △0.1%p 하향한 2.5%로 상대적으로 더 보수적인 전망을 제시했다. 세계은행은 특히 <strong>하방요인의 영향이 상방요인보다 크다</strong>고 평가하며, 중동 교전 재개·해협 봉쇄 장기화·무역정책 불확실성·통화긴축·기후재해가 겹칠 경우 성장률이 추가로 0.4~0.8%p 더 낮아질 수 있다고 경고했다.</p>
+
+      <div class="grid-2">
+        <div class="card">
+          <h4>선진국 — 에너지 의존도가 성장률을 갈랐다</h4>
+          <ul>
+            <li><strong>미국</strong>은 전쟁 영향이 제한적인 가운데 완화적 금융여건과 AI 투자 확대에 힘입어 2.0~2.3% 수준을 유지, 3개 기관 모두 직전 전망을 거의 그대로 유지했다.</li>
+            <li><strong>유로존</strong>은 천연가스·원유 수입의존도가 높아 에너지가격 급등의 직격탄을 맞으며 0.8~0.9%로 하향됐다.</li>
+            <li><strong>일본</strong> 역시 에너지가격 상승이 소비·수출에 부담으로 작용하며 0.6~0.7%로 낮아졌다.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>신흥·개도국 — 중동·중앙아가 직격탄</h4>
+          <ul>
+            <li><strong>중국</strong>은 첨단제조업·수출호조(IMF 4.6%, OECD·WB 4.2%)가 부동산 침체와 내수부진을 일부 상쇄했다.</li>
+            <li><strong>중동·북아프리카</strong>는 에너지 생산·수출 차질로 성장률이 크게 꺾였다(IMF 0.7%, WB 1.6%) — 3개 기관 중 가장 큰 폭의 하향 조정 지역이다.</li>
+            <li><strong>남아시아·인도</strong>는 일시 둔화 후에도 6%대 성장세를 유지하며 견조한 흐름을 지속했다.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="callout">
+        <span class="callout-label">물가 압력</span>
+        세계 물가상승률은 에너지·식품가격 상승 영향으로 IMF 기준 4.7%(+0.3%p, 선진국 3.0%·신흥국 5.8%), OECD 기준(G20) 4.0%로 전망되어, 성장 둔화와 물가 상방 압력이 동시에 나타나는 전형적인 공급충격형 국면으로 진단됐다.
+      </div>
+    </section>
+
+    <!-- ================= 03 2026 한국경제 ================= -->
+    <section id="korea26">
+      <div class="kicker">03 · 2026 한국경제 평가</div>
+      <h2>반도체·AI 수출이 에너지 부담을 압도하다</h2>
+      <p class="lead">세계경제가 대체로 하향 조정된 것과 대조적으로, 한국은 IMF·OECD 모두 발표대상국 중 <strong>가장 큰 폭의 상향 조정</strong>을 받았다. 세계은행은 한국을 별도로 전망하지 않는다.</p>
+
+      <div class="spectrum-block">
+        <div class="spectrum-title">2026년 한국 성장률<span class="range">범위 1.5% – 3.0%</span></div>
+        <div class="spectrum">
+          <div class="track"></div>
+          <div class="dot imf" style="left:73.3%" title="IMF 2.6% (직전 대비 +0.7%p)">IMF</div>
+          <div class="dot oecd" style="left:73.3%; top:16px;" title="OECD 2.6% (직전 대비 +0.9%p)">OE</div>
+        </div>
+        <div class="legend">
+          <span><i class="imf"></i>IMF 2.6% (4월 전망比 +0.7%p)</span>
+          <span><i class="oecd"></i>OECD 2.6% (3월 전망比 +0.9%p)</span>
+        </div>
+      </div>
+
+      <p>두 기관이 제시한 2026년 한국 성장률은 <strong class="num">2.6%</strong>로 정확히 일치한다. IMF는 한국을 대만·태국·말레이시아와 함께 <strong>AI 하드웨어 순수출 상위 4개국</strong>으로 지목하며, 중동發 에너지수입 부담이 큼에도 반도체·AI 하드웨어 수출호조에 힘입어 1분기 성장률이 연율(계절조정) 기준 <strong>7.5%</strong>를 기록, 당초 예상(4월 전망 1.8%)을 크게 뛰어넘었다고 평가했다.</p>
+
+      <p>OECD도 같은 맥락에서 수출이 2026년 초부터 가격·물량 모두에서 뚜렷한 증가세를 보였고, 반도체 중심 민간투자가 연말에는 다른 분야로도 확산되며 강세를 지속할 것으로 진단했다. 소비 역시 에너지위기 대응 추가경정예산 등 재정지원에 힘입어 점진적으로 회복하고 있다고 평가했다. 그 결과 OECD의 한국 성장률 전망은 3월 전망(1.7%) 대비 <strong>+0.9%p</strong> 상향되며 G20 국가 중 가장 큰 상승폭을 기록했다.</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>지표</th><th>IMF</th><th>OECD</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>2026년 성장률</td><td class="num">2.6% <span class="pos">(+0.7%p)</span></td><td class="num">2.6% <span class="pos">(+0.9%p)</span></td></tr>
+            <tr><td>2026년 물가상승률</td><td class="num">—<span class="note">(1·7월 전망은 물가 미발표)</span></td><td class="num">2.6% <span class="neg">(△0.1%p)</span></td></tr>
+            <tr><td>비교 근거</td><td class="num">발표대상 주요 30개국 中 최대 상향폭</td><td class="num">G20 국가 中 최대 상향폭</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout">
+        <span class="callout-label">재정 여력도 개선</span>
+        OECD는 성장률 상향에 힘입어 GDP 디플레이터(+7.6%)를 반영한 2026년 <strong>명목성장률을 10.4%</strong>로 추정했으며, GDP 대비 일반정부부채 전망도 직전(2025.12월) 전망 대비 하향 조정됐다(2026년 52.0%→48.2%, 2027년 55.0%→50.2%). 성장률 상향이 재정건전성 지표 개선으로 이어지는 선순환이 동시에 확인된 셈이다.
+      </div>
+    </section>
+
+    <!-- ================= 04 2027 세계경제 ================= -->
+    <section id="world27">
+      <div class="kicker">04 · 2027 세계경제 전망</div>
+      <h2>에너지 공급 정상화를 전제로 한 반등</h2>
+      <p>세 기관 모두 2027년 세계경제는 2026년보다 개선될 것으로 전망했다. IMF는 3.4%(+0.2%p), OECD는 3.1%(+0.1%p), 세계은행은 2.8%(+0.1%p)로 상향 조정했다. 공통 전제는 <strong>중동發 에너지·물류 공급충격의 완화</strong>다. IMF는 2026년 7월 중순부터 호르무즈 해협 통항 차질이 완화되고 점진적 회복을 거쳐 <strong>2027년 3월경에는 에너지 공급 및 물류여건이 전쟁 이전 수준으로 정상화</strong>된다는 것을 전제로 이번 전망을 산출했다.</p>
+
+      <p>이 전제가 지역별 반등 폭에도 그대로 반영됐다. 2026년 가장 큰 타격을 입었던 <strong>중동·중앙아시아</strong>는 IMF 기준 2026년 0.7%까지 떨어졌다가 2027년에는 <strong>6.5%</strong>로 정상화되며 반등하고, 세계은행 전망에서도 중동·북아프리카가 2026년 1.6%에서 2027년 5.0%로 가장 큰 폭(+3.4%p)으로 회복하는 지역으로 나타났다. 반면 선진국은 유로존·일본의 완만한 개선에도 불구하고 큰 폭의 반등보다는 완만한 정상화 흐름을 보일 것으로 전망됐다.</p>
+
+      <p>물가 측면에서는 시각이 다소 갈린다. OECD는 G20 물가상승률이 2026년 4.0%에서 2027년 3.1%로 하락하되 직전 전망 대비로는 오히려 <strong>+0.4%p 상향</strong>했다고 밝혔는데, 이는 최근 중동전쟁에 따른 에너지가격 상승분이 예상보다 더 오래 지속될 것으로 반영한 결과다. IMF도 주요국 근원물가가 점진적으로 목표 수준에 수렴할 것으로 예상하면서도, 이번 전망이 에너지·물류 정상화라는 다소 낙관적인 전제 위에 서 있다는 점은 유의할 필요가 있다.</p>
+    </section>
+
+    <!-- ================= 05 2027 한국경제 ================= -->
+    <section id="korea27">
+      <div class="kicker">05 · 2027 한국경제 전망</div>
+      <h2>모멘텀 지속이냐, 정상화냐 — 두 기관의 시각차</h2>
+      <p class="lead">2026년 전망에서는 정확히 일치했던 IMF와 OECD의 한국 전망이 2027년에는 뚜렷하게 갈린다. IMF는 반도체·AI 성장 모멘텀이 내년까지 이어진다고 보는 반면, OECD는 2026년의 이례적 수출 급증이 일정 부분 정상화될 것으로 본다.</p>
+
+      <div class="divergence">
+        <div class="imf-block">
+          <div class="org">IMF · 2027년 2.5%</div>
+          <div class="figure num">+0.4%p</div>
+          <p style="font-size:13.5px; margin:0;">2026년에 이어 2027년 전망도 동반 상향 조정됐다. IMF는 이를 <strong>한국의 반도체·AI 관련 성장 모멘텀이 내년에도 이어질 가능성</strong>을 시사하는 것으로 평가했다. 2026·2027년 성장률 모두 발표대상 선진국(G20선진국+스페인·네덜란드) 중 가장 높은 수준이다.</p>
+        </div>
+        <div class="oecd-block">
+          <div class="org">OECD · 2027년 1.9%</div>
+          <div class="figure num">△0.2%p</div>
+          <p style="font-size:13.5px; margin:0;">2026년 큰 폭 상향과 달리 2027년은 3월 전망 대비 소폭 하향됐다. 2026년의 수출 급증이 기저효과로 작용하며 성장률이 1%대로 낮아지는 <strong>정상화 경로</strong>를 반영한 것으로 해석된다. 물가상승률은 2.2%로 목표 수준 근접에 다소 못 미치는 수준(+0.2%p 상향)이다.</p>
+        </div>
+      </div>
+
+      <p>두 기관의 시각차는 결국 <strong>2026년 반도체·AI 수출 호황이 얼마나 지속가능한가</strong>에 대한 판단 차이로 귀결된다. IMF는 AI 밸류체인 편입에 따른 구조적 성장 동력으로 보는 반면, OECD는 소비자물가가 2027년 목표 수준으로 복귀(falling back to the target in 2027)하는 것과 맞물려 성장률도 잠재 수준에 가깝게 수렴하는 경로를 상정하고 있다. 두 시나리오 모두 2026년 하반기 이후 반도체·AI 수출 흐름과 중동 정세의 안정 여부에 따라 조정될 여지가 있다.</p>
+    </section>
+
+    <!-- ================= 06 리스크·정책 ================= -->
+    <section id="risk">
+      <div class="kicker">06 · 리스크 요인 및 정책 시사점</div>
+      <h2>세 기관이 공통으로 지목한 위험과 처방</h2>
+
+      <div class="grid-2">
+        <div class="card">
+          <h4>하방 리스크</h4>
+          <ul>
+            <li>중동 교전 재개 및 호르무즈 해협 봉쇄 장기화 — 세계은행은 실현 시 추가 △0.4~0.8%p 하락 가능성 제시</li>
+            <li>무역정책 불확실성 및 무역 분절화</li>
+            <li>주요국 통화긴축 지속, 일부 국가의 재정·통화 정책여력 약화</li>
+            <li>AI 기대 반전 시 소비·금융 위축 요인으로 작용할 가능성(IMF)</li>
+            <li>기후재해 등 자연재해 리스크(세계은행)</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>상방 요인</h4>
+          <ul>
+            <li>중동전쟁 조기 종전협상 타결(OECD)</li>
+            <li>AI 관련 투자 확산 및 생산성 향상(3개 기관 공통)</li>
+            <li>글로벌 AI 수요 확대 가능성(OECD)</li>
+            <li>에너지 공급·물류여건의 예상보다 빠른 정상화</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>정책 권고</h3>
+      <p>세 기관의 정책 권고는 상당 부분 수렴한다. 통화정책은 <strong>물가안정을 최우선</strong>으로 하되, 재정지원은 취약계층을 대상으로 <strong>한시적·선별적</strong>으로 운용할 것을 공통적으로 주문했다. 아울러 에너지 안보 확보를 위한 <strong>공급망 다각화</strong>와 다자무역체제 강화 등 국제협력, AI·구조개혁 대응역량 강화가 중장기 과제로 제시됐다. OECD는 특히 최고가격제·유류세 인하 등 에너지 가격 완충 정책이 단기적으로는 인플레 압력을 낮추지만 물가 압력의 지속성을 오히려 높일 수 있다고 지적하며 <strong>단계적 폐지(phase out)</strong>를 권고했다. 한국에 대해서는 민생물가 안정과 청년 등 취약부문 고용 지원, 양극화 해소와 함께 AI·녹색 대전환에 선제적으로 대응하기 위한 중장기 구조혁신의 필요성이 강조됐다.</p>
+    </section>
+
+    <!-- ================= 07 부록 ================= -->
+    <section id="appendix">
+      <div class="kicker">07 · 부록 · 기관별 상세 수치</div>
+      <h2>세계경제전망 상세 비교표</h2>
+
+      <h3>기관별 성장률·물가전망 통합비교 (단위 %, 괄호는 직전 전망 대비 조정폭 %p)</h3>
+      <div class="table-wrap">
+        <table class="merged">
+          <thead>
+            <tr>
+              <th rowspan="2" style="vertical-align:bottom;">구분</th>
+              <th colspan="2" class="grp imf-grp">IMF <span class="grp-sub">('26.7월, 4월比)</span></th>
+              <th colspan="2" class="grp wb-grp">World Bank <span class="grp-sub">('26.6월, 1월比)</span></th>
+              <th colspan="2" class="grp oecd-grp">OECD <span class="grp-sub">('26.6월, 3월比)</span></th>
+            </tr>
+            <tr>
+              <th class="sub imf-grp">'26</th><th class="sub imf-grp">'27</th>
+              <th class="sub wb-grp">'26</th><th class="sub wb-grp">'27</th>
+              <th class="sub oecd-grp">'26</th><th class="sub oecd-grp">'27</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="section-row"><td colspan="7">성장률</td></tr>
+            <tr class="hl">
+              <td>세계</td>
+              <td class="num">3.0 <span class="neg">(△0.1)</span></td><td class="num">3.4 <span class="pos">(+0.2)</span></td>
+              <td class="num">2.5 <span class="neg">(△0.1)</span></td><td class="num">2.8 <span class="pos">(+0.1)</span></td>
+              <td class="num">2.8 <span class="neg">(△0.1)</span></td><td class="num">3.1 <span class="pos">(+0.1)</span></td>
+            </tr>
+            <tr>
+              <td>선진국</td>
+              <td class="num">1.7 <span class="neg">(△0.1)</span></td><td class="num">1.8 <span class="pos">(+0.1)</span></td>
+              <td class="num">1.5 <span class="neg">(△0.1)</span></td><td class="num">1.8 <span class="pos">(+0.2)</span></td>
+              <td class="num">—</td><td class="num">—</td>
+            </tr>
+            <tr>
+              <td>미국</td>
+              <td class="num">2.3 (0.0)</td><td class="num">2.2 <span class="pos">(+0.1)</span></td>
+              <td class="num">2.2 (0.0)</td><td class="num">2.1 <span class="pos">(+0.2)</span></td>
+              <td class="num">2.0 (동일)</td><td class="num">—</td>
+            </tr>
+            <tr>
+              <td>유로존</td>
+              <td class="num">0.9 <span class="neg">(△0.2)</span></td><td class="num">1.2 (0.0)</td>
+              <td class="num">0.8 <span class="neg">(△0.1)</span></td><td class="num">1.3 <span class="pos">(+0.1)</span></td>
+              <td class="num">0.8 (동일)</td><td class="num">—</td>
+            </tr>
+            <tr>
+              <td>일본</td>
+              <td class="num">0.6 <span class="neg">(△0.1)</span></td><td class="num">0.7 <span class="pos">(+0.1)</span></td>
+              <td class="num">0.7 <span class="neg">(△0.1)</span></td><td class="num">0.9 <span class="pos">(+0.1)</span></td>
+              <td class="num">0.6 <span class="neg">(△0.3)</span></td><td class="num">—</td>
+            </tr>
+            <tr>
+              <td>영국</td>
+              <td class="num">1.0 <span class="pos">(+0.2)</span></td><td class="num">1.3 (0.0)</td>
+              <td class="num">—</td><td class="num">—</td>
+              <td class="num">—</td><td class="num">—</td>
+            </tr>
+            <tr class="hl">
+              <td>한국</td>
+              <td class="num">2.6 <span class="pos">(+0.7)</span></td><td class="num">2.5 <span class="pos">(+0.4)</span></td>
+              <td class="num">— <span class="note">(미발표)</span></td><td class="num">—</td>
+              <td class="num">2.6 <span class="pos">(+0.9)</span></td><td class="num">1.9 <span class="neg">(△0.2)</span></td>
+            </tr>
+            <tr>
+              <td>신흥·개도국</td>
+              <td class="num">3.8 <span class="neg">(△0.1)</span></td><td class="num">4.5 <span class="pos">(+0.3)</span></td>
+              <td class="num">3.6 <span class="neg">(△0.4)</span></td><td class="num">4.2 <span class="pos">(+0.1)</span></td>
+              <td class="num">—</td><td class="num">—</td>
+            </tr>
+            <tr>
+              <td>중국</td>
+              <td class="num">4.6 <span class="pos">(+0.2)</span></td><td class="num">4.1 <span class="pos">(+0.1)</span></td>
+              <td class="num">4.2 <span class="neg">(△0.2)</span></td><td class="num">4.3 <span class="pos">(+0.1)</span></td>
+              <td class="num">—</td><td class="num">—</td>
+            </tr>
+            <tr>
+              <td>인도</td>
+              <td class="num">6.4 <span class="neg">(△0.1)</span></td><td class="num">6.7 <span class="pos">(+0.2)</span></td>
+              <td class="num">6.6 <span class="pos">(+0.1)</span></td><td class="num">7.2 <span class="pos">(+0.6)</span></td>
+              <td class="num">—</td><td class="num">—</td>
+            </tr>
+            <tr>
+              <td>사우디</td>
+              <td class="num">1.7 <span class="neg">(△1.4)</span></td><td class="num">5.5 <span class="pos">(+1.0)</span></td>
+              <td class="num">3.1 <span class="neg">(△1.2)</span></td><td class="num">4.9 <span class="pos">(+0.5)</span></td>
+              <td class="num">—</td><td class="num">—</td>
+            </tr>
+            <tr>
+              <td>중동·북아프리카<span class="note">(IMF는 중동·중앙아)</span></td>
+              <td class="num">0.7 <span class="neg">(△1.2)</span></td><td class="num">6.5 <span class="pos">(자료내 언급)</span></td>
+              <td class="num">1.6 <span class="neg">(△2.7)</span></td><td class="num">5.0 <span class="pos">(+0.7)</span></td>
+              <td class="num">—</td><td class="num">—</td>
+            </tr>
+            <tr class="section-row"><td colspan="7">물가상승률</td></tr>
+            <tr>
+              <td>세계 / G20</td>
+              <td class="num">4.7 <span class="pos">(+0.3)</span></td><td class="num">—</td>
+              <td class="num">—</td><td class="num">—</td>
+              <td class="num">4.0 (동일)</td><td class="num">3.1 <span class="pos">(+0.4)</span></td>
+            </tr>
+            <tr>
+              <td>한국</td>
+              <td class="num">— <span class="note">(1·7월 미발표)</span></td><td class="num">—</td>
+              <td class="num">—</td><td class="num">—</td>
+              <td class="num">2.6 <span class="neg">(△0.1)</span></td><td class="num">2.2 <span class="pos">(+0.2)</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="table-caption">세계은행은 시장환율 기준(PPP 환산 시 '26년 세계 2.9%로 IMF·OECD와 유사)이며 한국을 별도 전망하지 않음. OECD는 미국·유로존·일본·중국 등 개별국 2027년 수치를 별도 공표하지 않아 세계·한국 중심으로 기재. IMF 중동·중앙아 '27년 6.5%는 조정폭이 보도자료에 별도 제시되지 않아 원문 수치만 표기.</div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  본 보고서는 재정경제부가 배포한 IMF 「7월 세계경제수정전망」(2026.7.8), 세계은행 「2026년 6월 세계경제전망(GEP)」(2026.6.11), OECD 「경제전망」(2026.6.3) 보도자료를 바탕으로 종합·재구성한 것이다. 원문은 각 기관 홈페이지(imf.org / worldbank.org / oecd.org)를 참고하시기 바랍니다. 기관별 전망은 산출 기준·시점·전제(특히 호르무즈 해협 정상화 시점)가 상이하므로 단순 비교 시 유의가 필요합니다.
+</footer>
+
+<script>
+(function(){
+  const EDIT_SELECTOR = 'p, li, td, h1, h2, h3, h4, .kpi-value, .kpi-delta, .kpi-label, .kpi-src, .figure, .org, .table-caption, .spectrum-title, .val, .note, .callout-label, .subtitle, .eyebrow, .legend span';
+  const scopes = document.querySelectorAll('main, .masthead, footer');
+  const editableEls = new Set();
+  scopes.forEach(function(scope){
+    if(scope.matches(EDIT_SELECTOR)) editableEls.add(scope);
+    scope.querySelectorAll(EDIT_SELECTOR).forEach(function(el){ editableEls.add(el); });
+  });
+  const editableList = Array.from(editableEls);
+
+  const toolbar = document.getElementById('toolbar');
+  const editToggle = document.getElementById('editToggle');
+  const printBtn = document.getElementById('printBtn');
+  const resetBtn = document.getElementById('resetBtn');
+  let editing = false;
+
+  function setEditing(on){
+    editing = on;
+    editableList.forEach(function(el){ el.contentEditable = on ? 'true' : 'false'; });
+    document.body.classList.toggle('editing-active', on);
+    toolbar.classList.toggle('editing', on);
+    editToggle.classList.toggle('active', on);
+    editToggle.textContent = on ? '✓ 편집 완료' : '✏️ 편집 모드 켜기';
+  }
+
+  editToggle.addEventListener('click', function(){ setEditing(!editing); });
+  printBtn.addEventListener('click', function(){ window.print(); });
+  resetBtn.addEventListener('click', function(){
+    if(confirm('편집한 내용을 모두 되돌리고 새로고침할까요?')) location.reload();
+  });
+
+  setEditing(false);
+})();
+</script>
+</body>
+</html>
